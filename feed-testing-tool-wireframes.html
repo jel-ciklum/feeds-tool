@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed Integration Testing & Demo Tool - Wireframes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #f1f3f5;
+            --border-color: #dee2e6;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --text-muted: #adb5bd;
+            --accent-blue: #0d6efd;
+            --accent-green: #198754;
+            --accent-orange: #fd7e14;
+            --accent-purple: #6f42c1;
+            --accent-red: #dc3545;
+            --accent-yellow: #ffc107;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        body {
+            font-family: 'Manrope', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+        
+        .nav-tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+        
+        .nav-tab.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+        
+        .wireframe-screen {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .wireframe-screen.active {
+            display: block;
+        }
+        
+        .container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .screen-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        
+        .screen-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .mockup {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .mockup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .mockup-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .toolbar {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn:hover {
+            background: var(--bg-primary);
+            border-color: var(--accent-blue);
+        }
+        
+        .btn-primary {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: #ffffff;
+        }
+        
+        .btn-primary:hover {
+            background: #0b5ed7;
+            transform: translateY(-1px);
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .select {
+            padding: 0.6rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .table thead {
+            background: var(--bg-primary);
+        }
+        
+        .table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+        
+        .table tbody tr {
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .table tbody tr:hover {
+            background: var(--bg-secondary);
+        }
+        
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        
+        .badge-active {
+            background: rgba(63, 185, 80, 0.15);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        
+        .badge-closed {
+            background: rgba(139, 148, 158, 0.15);
+            color: var(--text-secondary);
+            border: 1px solid var(--text-secondary);
+        }
+        
+        .badge-prematch {
+            background: rgba(88, 166, 255, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+        }
+        
+        .badge-inplay {
+            background: rgba(248, 81, 73, 0.15);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+        }
+        
+        .count-badge {
+            background: var(--accent-purple);
+            color: #ffffff;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .provider-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg-primary);
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+        
+        .provider-tab {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        
+        .provider-tab:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        .provider-tab.active {
+            background: var(--accent-blue);
+            color: #ffffff;
+            border-color: var(--accent-blue);
+        }
+        
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .market-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .market-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+        }
+        
+        .market-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        
+        .market-type {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .market-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .odds-display {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .odd-item {
+            flex: 1;
+            min-width: 80px;
+            background: var(--bg-secondary);
+            padding: 0.75rem;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .odd-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .odd-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .data-panel {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .data-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .data-panel-header:hover {
+            background: var(--bg-tertiary);
+        }
+        
+        .data-panel-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .data-panel-content {
+            padding: 1.5rem;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+        }
+        
+        .json-key {
+            color: #6f42c1;
+        }
+        
+        .json-string {
+            color: #198754;
+        }
+        
+        .json-number {
+            color: #fd7e14;
+        }
+        
+        .json-boolean {
+            color: #dc3545;
+        }
+        
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .metadata-item {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .metadata-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metadata-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .split-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .view-panel {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .view-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .view-panel-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .mapping-table {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .mapping-table th {
+            text-align: left;
+            padding: 0.75rem;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .mapping-table td {
+            padding: 0.75rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        
+        .arrow-icon {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+        
+        .notes-section {
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+        }
+        
+        .notes-title {
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        
+        .notes-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .notes-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .notes-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .split-view {
+                grid-template-columns: 1fr;
+            }
+            
+            .market-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .mockup {
+                padding: 1rem;
+            }
+            
+            .market-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metadata-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Side Panel Styles */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: -800px;
+            width: 800px;
+            height: 100vh;
+            background: var(--bg-primary);
+            box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .side-panel.open {
+            right: 0;
+        }
+        
+        .side-panel-header {
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .side-panel-title-section {
+            flex: 1;
+        }
+        
+        .side-panel-main-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .side-panel-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .close-panel-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: all 0.2s ease;
+        }
+        
+        .close-panel-btn:hover {
+            background: var(--border-color);
+        }
+        
+        .side-panel-content {
+            padding: 2rem;
+            flex: 1;
+        }
+        
+        .info-section {
+            margin-bottom: 2rem;
+        }
+        
+        .info-section-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-highlight {
+            background: #fff3cd;
+            border-left: 3px solid var(--accent-yellow);
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .info-highlight strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .mapping-highlight {
+            background: #e7d4ff;
+            border-left: 3px solid var(--accent-purple);
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .provider-badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .clickable-row {
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .clickable-row:hover {
+            background: var(--bg-tertiary) !important;
+        }
+        
+        .action-icon {
+            color: var(--accent-blue);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+        }
+        
+        .action-icon:hover {
+            color: #0b5ed7;
+            transform: scale(1.1);
+        }
+        
+        .toggle-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .toggle-label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            background: var(--border-color);
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .toggle-switch.active {
+            background: var(--accent-blue);
+        }
+        
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-switch.active::after {
+            transform: translateX(24px);
+        }
+        
+        .badge-suspended {
+            background: rgba(255, 193, 7, 0.15);
+            color: #856404;
+            border: 1px solid #ffc107;
+        }
+        
+        .badge-resulted {
+            background: rgba(108, 117, 125, 0.15);
+            color: var(--text-secondary);
+            border: 1px solid var(--text-secondary);
+        }
+        
+        .outcome-result {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+        }
+        
+        .outcome-result-win {
+            background: rgba(25, 135, 84, 0.15);
+            color: var(--accent-green);
+        }
+        
+        .outcome-result-lose {
+            background: rgba(220, 53, 69, 0.15);
+            color: var(--accent-red);
+        }
+        
+        .outcome-result-void {
+            background: rgba(108, 117, 125, 0.15);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Feed Integration Testing & Demo Tool</h1>
+            <p>Visual tool for testing feed integrations, QA validation, and stakeholder demonstrations</p>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-screen="events-list">Events List</button>
+            <button class="nav-tab" data-screen="event-detail-multi">Event Detail View</button>
+            <button class="nav-tab" data-screen="market-detail">Market Detail & Messages</button>
+        </div>
+        
+        <!-- Screen 1: Events List -->
+        <div class="wireframe-screen active" id="events-list">
+            <h2 class="screen-title">Screen 1: Events List View</h2>
+            <p class="screen-description">
+                Primary landing page displaying all events/fixtures received from feed providers in real-time. Users can filter by sport, league, status, and phase. Click the arrow icon (→) to navigate to Event Detail (Multi-Provider) page. Click the info icon (ⓘ) to open the detail view side panel (Screen 4) showing event messages, transformations, and mappings.
+            </p>
+            
+            <div class="mockup">
+                <div class="mockup-header">
+                    <h3 class="mockup-title">Feed Events Monitor <span style="color: var(--accent-green); font-size: 0.9rem; margin-left: 0.5rem;">● LIVE</span></h3>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">Sport:</span>
+                    <select class="select" id="filter-sport">
+                        <option value="all">All Sports</option>
+                        <option value="soccer">Soccer</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="american-football">American Football</option>
+                        <option value="baseball">Baseball</option>
+                        <option value="ice-hockey">Ice Hockey</option>
+                    </select>
+                    
+                    <span class="filter-label">Status:</span>
+                    <select class="select" id="filter-status">
+                        <option value="all">All Statuses</option>
+                        <option value="active">Active</option>
+                        <option value="closed">Closed</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                    
+                    <span class="filter-label">Phase:</span>
+                    <select class="select" id="filter-phase">
+                        <option value="all">All Phases</option>
+                        <option value="prematch">Pre-match</option>
+                        <option value="inplay">In-play</option>
+                        <option value="postmatch">Post-match</option>
+                    </select>
+                    
+                    <button class="btn" id="clear-filters">Clear Filters</button>
+                </div>
+                
+                <div style="margin: 1.5rem 0; color: var(--text-secondary); font-size: 0.9rem;">
+                    Showing <strong style="color: var(--text-primary);" id="event-count">247</strong> events
+                </div>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Event ID</th>
+                            <th>Sport</th>
+                            <th>Class</th>
+                            <th>League</th>
+                            <th>Teams / Description</th>
+                            <th>Start Time (UTC)</th>
+                            <th>Status</th>
+                            <th>Phase</th>
+                            <th>Providers</th>
+                            <th>Markets</th>
+                            <th style="width: 40px;"></th>
+                            <th style="width: 40px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="events-table-body">
+                        <tr class="clickable-row" data-sport="soccer" data-status="active" data-phase="prematch">
+                            <td><code style="color: var(--accent-blue); font-family: 'JetBrains Mono', monospace;">EVT-2025-001</code></td>
+                            <td>⚽ Soccer</td>
+                            <td>European Soccer</td>
+                            <td>UEFA Champions League</td>
+                            <td style="font-weight: 600;">Real Madrid vs Manchester City</td>
+                            <td>2025-12-23 13:00</td>
+                            <td><span class="badge badge-active">Active</span></td>
+                            <td><span class="badge badge-prematch">Pre-match</span></td>
+                            <td>
+                                <span class="provider-badge">Optic Odds</span>
+                                <span class="provider-badge">LSports</span>
+                            </td>
+                            <td><span class="count-badge">47</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); openEventPanel('EVT-2025-001')" title="Open detail view side panel">ⓘ</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); navigateToEvent('EVT-2025-001')" title="Go to event markets">→</span></td>
+                        </tr>
+                        <tr class="clickable-row" data-sport="basketball" data-status="active" data-phase="inplay">
+                            <td><code style="color: var(--accent-blue); font-family: 'JetBrains Mono', monospace;">EVT-2025-002</code></td>
+                            <td>🏀 Basketball</td>
+                            <td>American Basketball</td>
+                            <td>NBA</td>
+                            <td style="font-weight: 600;">Los Angeles Lakers vs Boston Celtics</td>
+                            <td>2025-12-23 18:30</td>
+                            <td><span class="badge badge-active">Active</span></td>
+                            <td><span class="badge badge-inplay">In-play</span></td>
+                            <td>
+                                <span class="provider-badge">Optic Odds</span>
+                                <span class="provider-badge">TX Odds</span>
+                            </td>
+                            <td><span class="count-badge">89</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); openEventPanel('EVT-2025-002')" title="Open detail view side panel">ⓘ</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); navigateToEvent('EVT-2025-002')" title="Go to event markets">→</span></td>
+                        </tr>
+                        <tr class="clickable-row" data-sport="american-football" data-status="active" data-phase="prematch">
+                            <td><code style="color: var(--accent-blue); font-family: 'JetBrains Mono', monospace;">EVT-2025-003</code></td>
+                            <td>🏈 American Football</td>
+                            <td>American Football</td>
+                            <td>NFL</td>
+                            <td style="font-weight: 600;">Kansas City Chiefs vs Buffalo Bills</td>
+                            <td>2025-12-24 20:00</td>
+                            <td><span class="badge badge-active">Active</span></td>
+                            <td><span class="badge badge-prematch">Pre-match</span></td>
+                            <td>
+                                <span class="provider-badge">FoxBet</span>
+                            </td>
+                            <td><span class="count-badge">126</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); openEventPanel('EVT-2025-003')" title="Open detail view side panel">ⓘ</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); navigateToEvent('EVT-2025-003')" title="Go to event markets">→</span></td>
+                        </tr>
+                        <tr class="clickable-row" data-sport="soccer" data-status="closed" data-phase="postmatch">
+                            <td><code style="color: var(--accent-blue); font-family: 'JetBrains Mono', monospace;">EVT-2025-004</code></td>
+                            <td>⚽ Soccer</td>
+                            <td>English Soccer</td>
+                            <td>Premier League</td>
+                            <td style="font-weight: 600;">Arsenal vs Liverpool</td>
+                            <td>2025-12-22 15:00</td>
+                            <td><span class="badge badge-closed">Closed</span></td>
+                            <td><span class="badge badge-prematch">Post-match</span></td>
+                            <td>
+                                <span class="provider-badge">LSports</span>
+                                <span class="provider-badge">TX Odds</span>
+                            </td>
+                            <td><span class="count-badge">42</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); openEventPanel('EVT-2025-004')" title="Open detail view side panel">ⓘ</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); navigateToEvent('EVT-2025-004')" title="Go to event markets">→</span></td>
+                        </tr>
+                        <tr class="clickable-row" data-sport="baseball" data-status="active" data-phase="prematch">
+                            <td><code style="color: var(--accent-blue); font-family: 'JetBrains Mono', monospace;">EVT-2025-005</code></td>
+                            <td>⚾ Baseball</td>
+                            <td>American Baseball</td>
+                            <td>MLB</td>
+                            <td style="font-weight: 600;">New York Yankees vs Los Angeles Dodgers</td>
+                            <td>2025-12-25 19:00</td>
+                            <td><span class="badge badge-active">Active</span></td>
+                            <td><span class="badge badge-prematch">Pre-match</span></td>
+                            <td>
+                                <span class="provider-badge">Optic Odds</span>
+                                <span class="provider-badge">LSports</span>
+                                <span class="provider-badge">FoxBet</span>
+                            </td>
+                            <td><span class="count-badge">67</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); openEventPanel('EVT-2025-005')" title="Open detail view side panel">ⓘ</span></td>
+                            <td><span class="action-icon" onclick="event.stopPropagation(); navigateToEvent('EVT-2025-005')" title="Go to event markets">→</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="notes-section">
+                <div class="notes-title">💡 Design Notes</div>
+                <div class="notes-content">
+                    <ul>
+                        <li><strong>Real-time Updates:</strong> Live indicator shows continuous data streaming, no manual refresh needed</li>
+                        <li><strong>Provider Visibility:</strong> Shows all providers offering each event with badges</li>
+                        <li><strong>Functional Filters:</strong> Working filters for sport, status, and phase with event count updates</li>
+                        <li><strong>Dual Navigation:</strong> Arrow icon (→) navigates to multi-provider event detail view</li>
+                        <li><strong>Quick Inspection:</strong> Info icon (ⓘ) opens detail view side panel (Screen 4 format) showing event messages, transformations, and mappings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 2: Event Detail View (Combined Single/Multi-Provider) -->
+        <div class="wireframe-screen" id="event-detail-multi">
+            <h2 class="screen-title">Screen 2: Event Detail View (Single & Multi-Provider)</h2>
+            <p class="screen-description">
+                Unified view with toggle between Single Provider Focus and Multi-Provider Comparison modes. Single mode shows one provider's markets with status badges (Active/Suspended/Closed/Resulted). Multi-provider mode enables tabs or side-by-side comparison with Compare Mode highlighting differences. Real-time updates throughout. Click any market card to open detail view side panel.
+            </p>
+            
+            <div class="mockup">
+                <div class="mockup-header">
+                    <button class="btn">← Back to Events</button>
+                    <h3 class="mockup-title">Event: Real Madrid vs Manchester City <span style="color: var(--accent-green); font-size: 0.9rem; margin-left: 0.5rem;">● LIVE</span></h3>
+                </div>
+                
+                <!-- View Mode Toggle -->
+                <div class="toggle-section">
+                    <span class="toggle-label" style="font-weight: 600; color: var(--text-primary);">View Mode:</span>
+                    <button class="btn" id="single-provider-btn" style="background: var(--accent-blue); color: #ffffff; border-color: var(--accent-blue);">Single Provider</button>
+                    <button class="btn" id="multi-provider-btn">Multi-Provider</button>
+                    
+                    <div id="single-provider-controls" style="display: flex; align-items: center; gap: 1rem; margin-left: 2rem;">
+                        <span class="filter-label">Provider:</span>
+                        <select class="select">
+                            <option>Optic Odds</option>
+                            <option>LSports</option>
+                            <option>FoxBet</option>
+                            <option>TX Odds</option>
+                        </select>
+                    </div>
+                    
+                    <div id="multi-provider-controls" style="display: none; margin-left: auto;">
+                        <button class="btn" id="compare-mode-btn-merged">⚖️ Enable Compare Mode</button>
+                    </div>
+                </div>
+                
+                <div class="metadata-grid">
+                    <div class="metadata-item">
+                        <div class="metadata-label">Event ID</div>
+                        <div class="metadata-value">EVT-2025-001</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">Sport</div>
+                        <div class="metadata-value">⚽ Soccer</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">League</div>
+                        <div class="metadata-value">UEFA Champions League</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">Start Time</div>
+                        <div class="metadata-value">2025-12-23 13:00 UTC</div>
+                    </div>
+                </div>
+                
+                <!-- Single Provider View -->
+                <div id="single-provider-view">
+                    <div style="margin: 2rem 0;">
+                        <h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-primary);" id="single-provider-title">Available Markets - Optic Odds</h4>
+                        <div class="filter-group" style="margin-bottom: 1.5rem;">
+                            <span class="filter-label">Filter Markets:</span>
+                            <select class="select">
+                                <option>All Market Types</option>
+                                <option>1X2</option>
+                                <option>Over/Under</option>
+                                <option>Both Teams to Score</option>
+                                <option>Handicap</option>
+                                <option>Correct Score</option>
+                            </select>
+                            <button class="btn">Show Active Only</button>
+                        </div>
+                    </div>
+                    
+                    <div class="market-grid" id="single-provider-markets">
+                        <!-- Markets will be dynamically updated based on provider selection -->
+                        <!-- Default: Optic Odds -->
+                        <div class="market-card" onclick="openMarketPanel('MKT-001')">
+                            <div class="market-card-header">
+                                <div>
+                                    <div class="market-type">1X2 - Match Result</div>
+                                    <div class="market-info">Market ID: MKT-001 • Updated: 2s ago</div>
+                                </div>
+                                <span class="badge badge-active">Active</span>
+                            </div>
+                            <div class="odds-display">
+                                <div class="odd-item">
+                                    <div class="odd-label">Home</div>
+                                    <div class="odd-value">2.10</div>
+                                </div>
+                                <div class="odd-item">
+                                    <div class="odd-label">Draw</div>
+                                    <div class="odd-value">3.50</div>
+                                </div>
+                                <div class="odd-item">
+                                    <div class="odd-label">Away</div>
+                                    <div class="odd-value">3.20</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="market-card" onclick="openMarketPanel('MKT-002')">
+                            <div class="market-card-header">
+                                <div>
+                                    <div class="market-type">Over/Under 2.5</div>
+                                    <div class="market-info">Market ID: MKT-002 • Updated: 5s ago</div>
+                                </div>
+                                <span class="badge badge-active">Active</span>
+                            </div>
+                            <div class="odds-display">
+                                <div class="odd-item">
+                                    <div class="odd-label">Over 2.5</div>
+                                    <div class="odd-value">1.85</div>
+                                </div>
+                                <div class="odd-item">
+                                    <div class="odd-label">Under 2.5</div>
+                                    <div class="odd-value">1.95</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="market-card" onclick="openMarketPanel('MKT-003')">
+                            <div class="market-card-header">
+                                <div>
+                                    <div class="market-type">First Goalscorer</div>
+                                    <div class="market-info">Market ID: MKT-003 • Updated: 8s ago</div>
+                                </div>
+                                <span class="badge badge-active">Active</span>
+                            </div>
+                            <div class="odds-display">
+                                <div class="odd-item">
+                                    <div class="odd-label">Vinicius Jr</div>
+                                    <div class="odd-value">5.50</div>
+                                </div>
+                                <div class="odd-item">
+                                    <div class="odd-label">Haaland</div>
+                                    <div class="odd-value">6.00</div>
+                                </div>
+                                <div class="odd-item">
+                                    <div class="odd-label">Bellingham</div>
+                                    <div class="odd-value">7.50</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Multi-Provider View -->
+                <div id="multi-provider-view" style="display: none;">
+                    <div style="margin: 2rem 0; padding: 1.5rem; background: var(--bg-tertiary); border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text-primary);">Side-by-Side Comparison View</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.95rem;">
+                            <strong>Compare Mode</strong> highlights differences between providers:
+                        </p>
+                        <ul style="color: var(--text-secondary); margin-bottom: 1.5rem; margin-left: 1.5rem; line-height: 1.8;">
+                            <li>🔍 <strong>Color-coding</strong> market names that don't match (e.g., "Match Winner" vs "1X2")</li>
+                            <li>📊 <strong>Highlighting</strong> odds variations beyond threshold (e.g., >5% difference)</li>
+                            <li>⚠️ <strong>Flagging</strong> markets available in one provider but missing in another</li>
+                            <li>✅ <strong>Validating</strong> that mappings align correctly across providers</li>
+                        </ul>
+                        
+                        <div class="split-view">
+                            <div class="view-panel">
+                                <div class="view-panel-header">
+                                    <div class="view-panel-title">Optic Odds</div>
+                                    <span class="count-badge">4 markets</span>
+                                </div>
+                                <div class="market-grid" style="grid-template-columns: 1fr;">
+                                    <div class="market-card" onclick="openMarketPanel('MKT-001-A')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">1X2 <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Match Result</span></div>
+                                                <div class="market-info">Updated: 2s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">Home</div>
+                                                <div class="odd-value">2.10</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">Draw</div>
+                                                <div class="odd-value">3.50</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">Away</div>
+                                                <div class="odd-value">3.20</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="market-card" onclick="openMarketPanel('MKT-002-A')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">Over/Under <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Total Goals 2.5</span></div>
+                                                <div class="market-info">Updated: 5s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">Over 2.5</div>
+                                                <div class="odd-value">1.85</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">Under 2.5</div>
+                                                <div class="odd-value">1.95</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="market-card" onclick="openMarketPanel('MKT-003-A')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">Both Teams to Score</div>
+                                                <div class="market-info">Updated: 8s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">Yes</div>
+                                                <div class="odd-value">1.72</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">No</div>
+                                                <div class="odd-value">2.10</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="market-card" onclick="openMarketPanel('MKT-004-A')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">Total Corners Over/Under 10.5</div>
+                                                <div class="market-info">Updated: 12s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">Over 10.5</div>
+                                                <div class="odd-value">1.88</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">Under 10.5</div>
+                                                <div class="odd-value">1.92</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="view-panel">
+                                <div class="view-panel-header">
+                                    <div class="view-panel-title">LSports</div>
+                                    <span class="count-badge">5 markets</span>
+                                </div>
+                                <div class="market-grid" style="grid-template-columns: 1fr;">
+                                    <div class="market-card" onclick="openMarketPanel('MKT-001-B')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">1X2 <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Match Winner</span></div>
+                                                <div class="market-info">Updated: 4s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">Home</div>
+                                                <div class="odd-value">2.15</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">Draw</div>
+                                                <div class="odd-value">3.45</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">Away</div>
+                                                <div class="odd-value">3.10</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="market-card" onclick="openMarketPanel('MKT-002-B')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">Over/Under <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Over/Under 2.5 Goals</span></div>
+                                                <div class="market-info">Updated: 3s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">Over 2.5</div>
+                                                <div class="odd-value">1.90</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">Under 2.5</div>
+                                                <div class="odd-value">1.90</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="market-card" onclick="openMarketPanel('MKT-005-B')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">Asian Handicap -0.5</div>
+                                                <div class="market-info">Updated: 7s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">Home -0.5</div>
+                                                <div class="odd-value">1.68</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">Away +0.5</div>
+                                                <div class="odd-value">2.20</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="market-card" onclick="openMarketPanel('MKT-006-B')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">Double Chance</div>
+                                                <div class="market-info">Updated: 10s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">1X</div>
+                                                <div class="odd-value">1.35</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">12</div>
+                                                <div class="odd-value">1.28</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">X2</div>
+                                                <div class="odd-value">1.62</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="market-card" onclick="openMarketPanel('MKT-007-B')">
+                                        <div class="market-card-header">
+                                            <div>
+                                                <div class="market-type">Halftime/Fulltime</div>
+                                                <div class="market-info">Updated: 15s ago</div>
+                                            </div>
+                                            <span class="badge badge-active">Active</span>
+                                        </div>
+                                        <div class="odds-display">
+                                            <div class="odd-item">
+                                                <div class="odd-label">1/1</div>
+                                                <div class="odd-value">3.80</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">X/1</div>
+                                                <div class="odd-value">7.50</div>
+                                            </div>
+                                            <div class="odd-item">
+                                                <div class="odd-label">2/2</div>
+                                                <div class="odd-value">5.20</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="compare-mode-notice" style="display: none; margin-top: 1.5rem; padding: 1rem; background: rgba(253, 126, 20, 0.1); border-left: 3px solid var(--accent-orange); border-radius: 4px;">
+                            <strong style="color: var(--accent-orange);">Compare Mode Active:</strong>
+                            <span style="color: var(--text-secondary);"> Orange highlights show differences between providers. Provider display names differ in both markets: "Match Winner" vs "Match Result" (1X2) and "Over/Under 2.5 Goals" vs "Total Goals 2.5" (Over/Under). All odds differ: 1X2 Home (2.15 vs 2.10), Draw (3.45 vs 3.50), Away (3.10 vs 3.20); Over/Under Over (1.90 vs 1.85), Under (1.90 vs 1.95). LSports has 5 markets vs Optic Odds' 4 markets.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notes-section">
+                <div class="notes-title">💡 Design Notes</div>
+                <div class="notes-content">
+                    <ul>
+                        <li><strong>Unified View:</strong> Single screen with mode toggle eliminates navigation between views</li>
+                        <li><strong>Single Provider Mode:</strong> Shows one provider's markets with status badges (Active, Suspended, Closed, Resulted) and result indicators (Win/Lose/Void)</li>
+                        <li><strong>Multi-Provider Mode:</strong> Tabs or side-by-side comparison with Compare Mode to highlight differences</li>
+                        <li><strong>Real-time Updates:</strong> Continuous streaming shown by live badge, no manual refresh needed</li>
+                        <li><strong>Side Panel Integration:</strong> Click any market card to open detail view side panel (Screen 4 format)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 3: Market Detail & Messages -->
+        <div class="wireframe-screen" id="market-detail">
+            <h2 class="screen-title">Screen 3: Market Detail & Message Inspection (Side Panel)</h2>
+            <p class="screen-description">
+                Displayed in a side panel when clicking market cards or event info icons. Shows raw provider messages, transformed output, and mappings as highlighted text for easy copying and debugging.
+            </p>
+            
+            <div class="mockup">
+                <div class="mockup-header">
+                    <h3 class="mockup-title">Side Panel Preview</h3>
+                </div>
+                
+                <div style="background: var(--bg-secondary); border: 2px solid var(--border-color); border-radius: 8px; padding: 2rem; max-width: 800px; margin: 0 auto;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border-color);">
+                        <div>
+                            <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">1X2 - Match Result</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Market ID: MKT-001 • Provider A • Real Madrid vs Manchester City</div>
+                        </div>
+                        <button class="close-panel-btn">✕</button>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-section-title">📊 Market Summary</div>
+                        <div class="info-highlight">
+                            <strong>Market Type:</strong> 1X2
+                        </div>
+                        <div class="info-highlight">
+                            <strong>Status:</strong> Active
+                        </div>
+                        <div class="info-highlight">
+                            <strong>Last Updated:</strong> 2025-12-05 14:32:18 UTC (2 seconds ago)
+                        </div>
+                        <div class="info-highlight">
+                            <strong>Selections:</strong> Home Win (2.10), Draw (3.50), Away Win (3.20)
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-section-title">🔄 Applied Mappings</div>
+                        <div class="mapping-highlight">
+                            <strong>Team Mapping:</strong> "R Madrid" → "Real Madrid" <code style="font-size: 0.85rem; color: var(--accent-purple);">[TEAM-MAP-001]</code>
+                        </div>
+                        <div class="mapping-highlight">
+                            <strong>Team Mapping:</strong> "Man City" → "Manchester City" <code style="font-size: 0.85rem; color: var(--accent-purple);">[TEAM-MAP-002]</code>
+                        </div>
+                        <div class="mapping-highlight">
+                            <strong>Market Type:</strong> "match_winner" → "1X2" <code style="font-size: 0.85rem; color: var(--accent-purple);">[MARKET-MAP-001]</code>
+                        </div>
+                        <div class="mapping-highlight">
+                            <strong>Outcome Name:</strong> "home" → "Home Win" <code style="font-size: 0.85rem; color: var(--accent-purple);">[OUTCOME-MAP-001]</code>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-section-title">📥 Provider Message (Raw)</div>
+                        <div style="position: relative;">
+                            <div class="code-block">
+                                <button class="copy-btn">📋 Copy</button>
+<pre style="margin: 0; color: var(--text-primary);">{
+  <span class="json-key">"messageType"</span>: <span class="json-string">"odds_update"</span>,
+  <span class="json-key">"timestamp"</span>: <span class="json-string">"2025-12-05T14:32:18Z"</span>,
+  <span class="json-key">"provider"</span>: <span class="json-string">"optic_odds"</span>,
+  <span class="json-key">"event"</span>: {
+    <span class="json-key">"id"</span>: <span class="json-string">"PA-EVT-5829473"</span>,
+    <span class="json-key">"homeTeam"</span>: <span class="json-string">"R Madrid"</span>,
+    <span class="json-key">"awayTeam"</span>: <span class="json-string">"Man City"</span>
+  },
+  <span class="json-key">"market"</span>: {
+    <span class="json-key">"id"</span>: <span class="json-string">"PA-MKT-823947"</span>,
+    <span class="json-key">"type"</span>: <span class="json-string">"match_winner"</span>,
+    <span class="json-key">"outcomes"</span>: [
+      { <span class="json-key">"id"</span>: <span class="json-string">"1"</span>, <span class="json-key">"name"</span>: <span class="json-string">"home"</span>, <span class="json-key">"odds"</span>: <span class="json-number">2.10</span> },
+      { <span class="json-key">"id"</span>: <span class="json-string">"X"</span>, <span class="json-key">"name"</span>: <span class="json-string">"draw"</span>, <span class="json-key">"odds"</span>: <span class="json-number">3.50</span> },
+      { <span class="json-key">"id"</span>: <span class="json-string">"2"</span>, <span class="json-key">"name"</span>: <span class="json-string">"away"</span>, <span class="json-key">"odds"</span>: <span class="json-number">3.20</span> }
+    ]
+  }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-section-title">📤 Transformed Message (Output)</div>
+                        <div style="position: relative;">
+                            <div class="code-block">
+                                <button class="copy-btn">📋 Copy</button>
+<pre style="margin: 0; color: var(--text-primary);">{
+  <span class="json-key">"messageType"</span>: <span class="json-string">"market_update"</span>,
+  <span class="json-key">"timestamp"</span>: <span class="json-string">"2025-12-05T14:32:18Z"</span>,
+  <span class="json-key">"sourceProvider"</span>: <span class="json-string">"optic_odds"</span>,
+  <span class="json-key">"standardEvent"</span>: {
+    <span class="json-key">"eventId"</span>: <span class="json-string">"EVT-2025-001"</span>,
+    <span class="json-key">"homeTeam"</span>: <span class="json-string">"Real Madrid"</span>,
+    <span class="json-key">"awayTeam"</span>: <span class="json-string">"Manchester City"</span>
+  },
+  <span class="json-key">"standardMarket"</span>: {
+    <span class="json-key">"marketId"</span>: <span class="json-string">"MKT-001"</span>,
+    <span class="json-key">"marketType"</span>: <span class="json-string">"1X2"</span>,
+    <span class="json-key">"selections"</span>: [
+      { <span class="json-key">"id"</span>: <span class="json-string">"SEL-001"</span>, <span class="json-key">"name"</span>: <span class="json-string">"Home Win"</span>, <span class="json-key">"odds"</span>: <span class="json-number">2.10</span> },
+      { <span class="json-key">"id"</span>: <span class="json-string">"SEL-002"</span>, <span class="json-key">"name"</span>: <span class="json-string">"Draw"</span>, <span class="json-key">"odds"</span>: <span class="json-number">3.50</span> },
+      { <span class="json-key">"id"</span>: <span class="json-string">"SEL-003"</span>, <span class="json-key">"name"</span>: <span class="json-string">"Away Win"</span>, <span class="json-key">"odds"</span>: <span class="json-number">3.20</span> }
+    ]
+  },
+  <span class="json-key">"transformationMetadata"</span>: {
+    <span class="json-key">"mappings"</span>: [<span class="json-string">"TEAM-MAP-001"</span>, <span class="json-string">"TEAM-MAP-002"</span>, <span class="json-string">"MARKET-MAP-001"</span>]
+  }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notes-section">
+                <div class="notes-title">💡 Design Notes</div>
+                <div class="notes-content">
+                    <ul>
+                        <li><strong>Side Panel Display:</strong> Opens from right side, 800px width, doesn't navigate away from current view</li>
+                        <li><strong>Highlighted Information:</strong> Key details shown in colored highlight boxes (yellow for info, purple for mappings)</li>
+                        <li><strong>Compact Format:</strong> No expandable panels, all content visible with scroll</li>
+                        <li><strong>Copy Functionality:</strong> Easy copying of raw and transformed JSON messages</li>
+                        <li><strong>Mapping Clarity:</strong> Shows source → target with mapping rule IDs in purple code tags</li>
+                        <li><strong>Quick Close:</strong> X button in header to return to main view</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Side Panel -->
+    <div class="side-panel" id="sidePanel">
+        <div class="side-panel-header">
+            <div class="side-panel-title-section">
+                <div class="side-panel-main-title" id="sidePanelTitle">Event Details</div>
+                <div class="side-panel-subtitle" id="sidePanelSubtitle">Loading...</div>
+            </div>
+            <button class="close-panel-btn" onclick="closeSidePanel()">✕</button>
+        </div>
+        <div class="side-panel-content" id="sidePanelContent">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching functionality
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const screens = document.querySelectorAll('.wireframe-screen');
+        
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetScreen = tab.getAttribute('data-screen');
+                
+                navTabs.forEach(t => t.classList.remove('active'));
+                screens.forEach(s => s.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(targetScreen).classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // Provider tab switching
+        const providerTabs = document.querySelectorAll('.provider-tab');
+        providerTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                providerTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+        
+        // Filter functionality for events list
+        const filterSport = document.getElementById('filter-sport');
+        const filterStatus = document.getElementById('filter-status');
+        const filterPhase = document.getElementById('filter-phase');
+        const clearFiltersBtn = document.getElementById('clear-filters');
+        const eventCount = document.getElementById('event-count');
+        const tableRows = document.querySelectorAll('#events-table-body tr');
+        
+        function applyFilters() {
+            const sportValue = filterSport?.value || 'all';
+            const statusValue = filterStatus?.value || 'all';
+            const phaseValue = filterPhase?.value || 'all';
+            
+            let visibleCount = 0;
+            
+            tableRows.forEach(row => {
+                const rowSport = row.getAttribute('data-sport');
+                const rowStatus = row.getAttribute('data-status');
+                const rowPhase = row.getAttribute('data-phase');
+                
+                const sportMatch = sportValue === 'all' || rowSport === sportValue;
+                const statusMatch = statusValue === 'all' || rowStatus === statusValue;
+                const phaseMatch = phaseValue === 'all' || rowPhase === phaseValue;
+                
+                if (sportMatch && statusMatch && phaseMatch) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            if (eventCount) {
+                eventCount.textContent = visibleCount;
+            }
+        }
+        
+        if (filterSport) filterSport.addEventListener('change', applyFilters);
+        if (filterStatus) filterStatus.addEventListener('change', applyFilters);
+        if (filterPhase) filterPhase.addEventListener('change', applyFilters);
+        
+        if (clearFiltersBtn) {
+            clearFiltersBtn.addEventListener('click', () => {
+                if (filterSport) filterSport.value = 'all';
+                if (filterStatus) filterStatus.value = 'all';
+                if (filterPhase) filterPhase.value = 'all';
+                applyFilters();
+            });
+        }
+        
+        // Side panel functionality
+        function openEventPanel(eventId) {
+            const panel = document.getElementById('sidePanel');
+            const title = document.getElementById('sidePanelTitle');
+            const subtitle = document.getElementById('sidePanelSubtitle');
+            const content = document.getElementById('sidePanelContent');
+            
+            // Sample event data (in real implementation, this would come from your data)
+            const eventData = {
+                'EVT-2025-001': {
+                    name: 'Real Madrid vs Manchester City',
+                    sport: '⚽ Soccer',
+                    league: 'UEFA Champions League',
+                    startTime: '2025-12-23 13:00 UTC',
+                    status: 'Active',
+                    phase: 'Pre-match',
+                    providers: ['Optic Odds', 'LSports']
+                },
+                'EVT-2025-002': {
+                    name: 'Los Angeles Lakers vs Boston Celtics',
+                    sport: '🏀 Basketball',
+                    league: 'NBA',
+                    startTime: '2025-12-23 18:30 UTC',
+                    status: 'Active',
+                    phase: 'In-play',
+                    providers: ['Optic Odds', 'TX Odds']
+                }
+            };
+            
+            const event = eventData[eventId] || eventData['EVT-2025-001'];
+            
+            title.textContent = event.name;
+            subtitle.textContent = `${eventId} • ${event.sport} • ${event.league}`;
+            
+            content.innerHTML = `
+                <div class="info-section">
+                    <div class="info-section-title">📊 Event Summary</div>
+                    <div class="info-highlight">
+                        <strong>Event ID:</strong> ${eventId}
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Sport:</strong> ${event.sport}
+                    </div>
+                    <div class="info-highlight">
+                        <strong>League:</strong> ${event.league}
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Start Time:</strong> ${event.startTime}
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Status:</strong> ${event.status}
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Phase:</strong> ${event.phase}
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Providers:</strong> ${event.providers.join(', ')}
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-section-title">🔄 Applied Mappings</div>
+                    <div class="mapping-highlight">
+                        <strong>Team Mapping:</strong> "R Madrid" → "Real Madrid" <code style="font-size: 0.85rem; color: var(--accent-purple);">[TEAM-MAP-001]</code>
+                    </div>
+                    <div class="mapping-highlight">
+                        <strong>Team Mapping:</strong> "Man City" → "Manchester City" <code style="font-size: 0.85rem; color: var(--accent-purple);">[TEAM-MAP-002]</code>
+                    </div>
+                    <div class="mapping-highlight">
+                        <strong>League Mapping:</strong> "UCL" → "UEFA Champions League" <code style="font-size: 0.85rem; color: var(--accent-purple);">[LEAGUE-MAP-001]</code>
+                    </div>
+                    <div class="mapping-highlight">
+                        <strong>Instance Creation:</strong> Created canonical event instance <code style="font-size: 0.85rem; color: var(--accent-purple);">[INST-001]</code>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-section-title">📥 Provider Message (Raw)</div>
+                    <div style="position: relative;">
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCodeBlock(this)">📋 Copy</button>
+<pre style="margin: 0; color: var(--text-primary);">{
+  <span class="json-key">"messageType"</span>: <span class="json-string">"event_update"</span>,
+  <span class="json-key">"timestamp"</span>: <span class="json-string">"2025-12-05T14:32:18Z"</span>,
+  <span class="json-key">"provider"</span>: <span class="json-string">"optic_odds"</span>,
+  <span class="json-key">"event"</span>: {
+    <span class="json-key">"id"</span>: <span class="json-string">"PA-EVT-5829473"</span>,
+    <span class="json-key">"sport"</span>: <span class="json-string">"soccer"</span>,
+    <span class="json-key">"league"</span>: <span class="json-string">"UCL"</span>,
+    <span class="json-key">"homeTeam"</span>: <span class="json-string">"R Madrid"</span>,
+    <span class="json-key">"awayTeam"</span>: <span class="json-string">"Man City"</span>,
+    <span class="json-key">"startTime"</span>: <span class="json-string">"2025-12-23T13:00:00Z"</span>,
+    <span class="json-key">"status"</span>: <span class="json-string">"active"</span>
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-section-title">📤 Transformed Message (Output)</div>
+                    <div style="position: relative;">
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCodeBlock(this)">📋 Copy</button>
+<pre style="margin: 0; color: var(--text-primary);">{
+  <span class="json-key">"messageType"</span>: <span class="json-string">"event_update"</span>,
+  <span class="json-key">"timestamp"</span>: <span class="json-string">"2025-12-05T14:32:18Z"</span>,
+  <span class="json-key">"sourceProvider"</span>: <span class="json-string">"optic_odds"</span>,
+  <span class="json-key">"standardEvent"</span>: {
+    <span class="json-key">"eventId"</span>: <span class="json-string">"${eventId}"</span>,
+    <span class="json-key">"sport"</span>: <span class="json-string">"Soccer"</span>,
+    <span class="json-key">"league"</span>: <span class="json-string">"UEFA Champions League"</span>,
+    <span class="json-key">"homeTeam"</span>: <span class="json-string">"Real Madrid"</span>,
+    <span class="json-key">"awayTeam"</span>: <span class="json-string">"Manchester City"</span>,
+    <span class="json-key">"startTime"</span>: <span class="json-string">"2025-12-23T13:00:00Z"</span>,
+    <span class="json-key">"status"</span>: <span class="json-string">"active"</span>,
+    <span class="json-key">"phase"</span>: <span class="json-string">"pre-match"</span>
+  },
+  <span class="json-key">"transformationMetadata"</span>: {
+    <span class="json-key">"mappings"</span>: [<span class="json-string">"TEAM-MAP-001"</span>, <span class="json-string">"TEAM-MAP-002"</span>, <span class="json-string">"LEAGUE-MAP-001"</span>, <span class="json-string">"INST-001"</span>]
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            panel.classList.add('open');
+        }
+        
+        function openMarketPanel(marketId) {
+            const panel = document.getElementById('sidePanel');
+            const title = document.getElementById('sidePanelTitle');
+            const subtitle = document.getElementById('sidePanelSubtitle');
+            const content = document.getElementById('sidePanelContent');
+            
+            title.textContent = '1X2 - Match Result';
+            subtitle.textContent = `${marketId} • Optic Odds • Real Madrid vs Manchester City`;
+            
+            content.innerHTML = `
+                <div class="info-section">
+                    <div class="info-section-title">📊 Market Summary</div>
+                    <div class="info-highlight">
+                        <strong>Market Type:</strong> 1X2
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Market ID:</strong> ${marketId}
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Status:</strong> Active
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Last Updated:</strong> 2025-12-05 14:32:18 UTC (2 seconds ago)
+                    </div>
+                    <div class="info-highlight">
+                        <strong>Selections:</strong> Home Win (2.10), Draw (3.50), Away Win (3.20)
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-section-title">🔄 Applied Mappings</div>
+                    <div class="mapping-highlight">
+                        <strong>Team Mapping:</strong> "R Madrid" → "Real Madrid" <code style="font-size: 0.85rem; color: var(--accent-purple);">[TEAM-MAP-001]</code>
+                    </div>
+                    <div class="mapping-highlight">
+                        <strong>Team Mapping:</strong> "Man City" → "Manchester City" <code style="font-size: 0.85rem; color: var(--accent-purple);">[TEAM-MAP-002]</code>
+                    </div>
+                    <div class="mapping-highlight">
+                        <strong>Market Type:</strong> "match_winner" → "1X2" <code style="font-size: 0.85rem; color: var(--accent-purple);">[MARKET-MAP-001]</code>
+                    </div>
+                    <div class="mapping-highlight">
+                        <strong>Outcome Name:</strong> "home" → "Home Win" <code style="font-size: 0.85rem; color: var(--accent-purple);">[OUTCOME-MAP-001]</code>
+                    </div>
+                    <div class="mapping-highlight">
+                        <strong>Outcome Name:</strong> "draw" → "Draw" <code style="font-size: 0.85rem; color: var(--accent-purple);">[OUTCOME-MAP-002]</code>
+                    </div>
+                    <div class="mapping-highlight">
+                        <strong>Outcome Name:</strong> "away" → "Away Win" <code style="font-size: 0.85rem; color: var(--accent-purple);">[OUTCOME-MAP-003]</code>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-section-title">📥 Provider Message (Raw)</div>
+                    <div style="position: relative;">
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCodeBlock(this)">📋 Copy</button>
+<pre style="margin: 0; color: var(--text-primary);">{
+  <span class="json-key">"messageType"</span>: <span class="json-string">"odds_update"</span>,
+  <span class="json-key">"timestamp"</span>: <span class="json-string">"2025-12-05T14:32:18Z"</span>,
+  <span class="json-key">"provider"</span>: <span class="json-string">"optic_odds"</span>,
+  <span class="json-key">"event"</span>: {
+    <span class="json-key">"id"</span>: <span class="json-string">"PA-EVT-5829473"</span>,
+    <span class="json-key">"homeTeam"</span>: <span class="json-string">"R Madrid"</span>,
+    <span class="json-key">"awayTeam"</span>: <span class="json-string">"Man City"</span>
+  },
+  <span class="json-key">"market"</span>: {
+    <span class="json-key">"id"</span>: <span class="json-string">"PA-MKT-823947"</span>,
+    <span class="json-key">"type"</span>: <span class="json-string">"match_winner"</span>,
+    <span class="json-key">"outcomes"</span>: [
+      { <span class="json-key">"id"</span>: <span class="json-string">"1"</span>, <span class="json-key">"name"</span>: <span class="json-string">"home"</span>, <span class="json-key">"odds"</span>: <span class="json-number">2.10</span> },
+      { <span class="json-key">"id"</span>: <span class="json-string">"X"</span>, <span class="json-key">"name"</span>: <span class="json-string">"draw"</span>, <span class="json-key">"odds"</span>: <span class="json-number">3.50</span> },
+      { <span class="json-key">"id"</span>: <span class="json-string">"2"</span>, <span class="json-key">"name"</span>: <span class="json-string">"away"</span>, <span class="json-key">"odds"</span>: <span class="json-number">3.20</span> }
+    ]
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-section-title">📤 Transformed Message (Output)</div>
+                    <div style="position: relative;">
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCodeBlock(this)">📋 Copy</button>
+<pre style="margin: 0; color: var(--text-primary);">{
+  <span class="json-key">"messageType"</span>: <span class="json-string">"market_update"</span>,
+  <span class="json-key">"timestamp"</span>: <span class="json-string">"2025-12-05T14:32:18Z"</span>,
+  <span class="json-key">"sourceProvider"</span>: <span class="json-string">"optic_odds"</span>,
+  <span class="json-key">"standardEvent"</span>: {
+    <span class="json-key">"eventId"</span>: <span class="json-string">"EVT-2025-001"</span>,
+    <span class="json-key">"homeTeam"</span>: <span class="json-string">"Real Madrid"</span>,
+    <span class="json-key">"awayTeam"</span>: <span class="json-string">"Manchester City"</span>
+  },
+  <span class="json-key">"standardMarket"</span>: {
+    <span class="json-key">"marketId"</span>: <span class="json-string">"${marketId}"</span>,
+    <span class="json-key">"marketType"</span>: <span class="json-string">"1X2"</span>,
+    <span class="json-key">"selections"</span>: [
+      { <span class="json-key">"id"</span>: <span class="json-string">"SEL-001"</span>, <span class="json-key">"name"</span>: <span class="json-string">"Home Win"</span>, <span class="json-key">"odds"</span>: <span class="json-number">2.10</span> },
+      { <span class="json-key">"id"</span>: <span class="json-string">"SEL-002"</span>, <span class="json-key">"name"</span>: <span class="json-string">"Draw"</span>, <span class="json-key">"odds"</span>: <span class="json-number">3.50</span> },
+      { <span class="json-key">"id"</span>: <span class="json-string">"SEL-003"</span>, <span class="json-key">"name"</span>: <span class="json-string">"Away Win"</span>, <span class="json-key">"odds"</span>: <span class="json-number">3.20</span> }
+    ]
+  },
+  <span class="json-key">"transformationMetadata"</span>: {
+    <span class="json-key">"mappings"</span>: [<span class="json-string">"TEAM-MAP-001"</span>, <span class="json-string">"TEAM-MAP-002"</span>, <span class="json-string">"MARKET-MAP-001"</span>, <span class="json-string">"OUTCOME-MAP-001"</span>]
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            panel.classList.add('open');
+        }
+        
+        function closeSidePanel() {
+            const panel = document.getElementById('sidePanel');
+            panel.classList.remove('open');
+        }
+        
+        function copyCodeBlock(button) {
+            const codeBlock = button.parentElement;
+            const preElement = codeBlock.querySelector('pre');
+            
+            if (preElement) {
+                const text = preElement.textContent;
+                
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = button.textContent;
+                    button.textContent = '✓ Copied!';
+                    button.style.background = 'var(--accent-green)';
+                    button.style.color = '#ffffff';
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.background = '';
+                        button.style.color = '';
+                    }, 2000);
+                });
+            }
+        }
+        
+        function navigateToEvent(eventId) {
+            // Navigate to multi-provider event detail view
+            const multiProviderTab = document.querySelector('[data-screen="event-detail-multi"]');
+            if (multiProviderTab) {
+                multiProviderTab.click();
+            }
+        }
+        
+        // Toggle switch functionality
+        const toggleSwitches = document.querySelectorAll('.toggle-switch');
+        toggleSwitches.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                toggle.classList.toggle('active');
+            });
+        });
+        
+        // View mode toggle (Single Provider vs Multi-Provider)
+        const singleProviderBtn = document.getElementById('single-provider-btn');
+        const multiProviderBtn = document.getElementById('multi-provider-btn');
+        const singleProviderView = document.getElementById('single-provider-view');
+        const multiProviderView = document.getElementById('multi-provider-view');
+        const singleProviderControls = document.getElementById('single-provider-controls');
+        const multiProviderControls = document.getElementById('multi-provider-controls');
+        
+        // Market data for each provider
+        const providerMarkets = {
+            'Optic Odds': {
+                title: 'Available Markets - Optic Odds',
+                markets: [
+                    { id: 'MKT-001', type: '1X2 - Match Result', status: 'Active', odds: [{label: 'Home', value: '2.10'}, {label: 'Draw', value: '3.50'}, {label: 'Away', value: '3.20'}], updated: '2s ago' },
+                    { id: 'MKT-002', type: 'Over/Under 2.5', status: 'Active', odds: [{label: 'Over 2.5', value: '1.85'}, {label: 'Under 2.5', value: '1.95'}], updated: '5s ago' },
+                    { id: 'MKT-003', type: 'First Goalscorer', status: 'Active', odds: [{label: 'Vinicius Jr', value: '5.50'}, {label: 'Haaland', value: '6.00'}, {label: 'Bellingham', value: '7.50'}], updated: '8s ago' }
+                ]
+            },
+            'LSports': {
+                title: 'Available Markets - LSports',
+                markets: [
+                    { id: 'MKT-001', type: '1X2 - Match Result', status: 'Active', odds: [{label: 'Home', value: '2.15'}, {label: 'Draw', value: '3.45'}, {label: 'Away', value: '3.10'}], updated: '3s ago' },
+                    { id: 'MKT-002', type: 'Over/Under 2.5', status: 'Active', odds: [{label: 'Over 2.5', value: '1.90'}, {label: 'Under 2.5', value: '1.90'}], updated: '4s ago' },
+                    { id: 'MKT-004', type: 'Both Teams to Score', status: 'Active', odds: [{label: 'Yes', value: '1.68'}, {label: 'No', value: '2.20'}], updated: '7s ago' }
+                ]
+            },
+            'FoxBet': {
+                title: 'Available Markets - FoxBet',
+                markets: [
+                    { id: 'MKT-001', type: '1X2 - Match Result', status: 'Active', odds: [{label: 'Home', value: '2.08'}, {label: 'Draw', value: '3.55'}, {label: 'Away', value: '3.25'}], updated: '5s ago' },
+                    { id: 'MKT-002', type: 'Over/Under 2.5', status: 'Active', odds: [{label: 'Over 2.5', value: '1.88'}, {label: 'Under 2.5', value: '1.92'}], updated: '6s ago' }
+                ]
+            },
+            'TX Odds': {
+                title: 'Available Markets - TX Odds',
+                markets: [
+                    { id: 'MKT-001', type: '1X2 - Match Result', status: 'Active', odds: [{label: 'Home', value: '2.12'}, {label: 'Draw', value: '3.48'}, {label: 'Away', value: '3.18'}], updated: '4s ago' },
+                    { id: 'MKT-002', type: 'Over/Under 2.5', status: 'Active', odds: [{label: 'Over 2.5', value: '1.87'}, {label: 'Under 2.5', value: '1.93'}], updated: '5s ago' },
+                    { id: 'MKT-005', type: 'Correct Score', status: 'Active', odds: [{label: '0-0', value: '12.00'}, {label: '1-1', value: '7.50'}, {label: '2-2', value: '15.00'}, {label: '1-0', value: '9.00'}, {label: '0-1', value: '10.50'}, {label: '1-2', value: '13.00'}, {label: '2-1', value: '11.00'}], updated: '9s ago' }
+                ]
+            }
+        };
+        
+        function updateSingleProviderMarkets(provider) {
+            const data = providerMarkets[provider];
+            const titleEl = document.getElementById('single-provider-title');
+            const marketsContainer = document.getElementById('single-provider-markets');
+            
+            if (titleEl) titleEl.textContent = data.title;
+            
+            if (marketsContainer) {
+                let html = '';
+                data.markets.forEach(market => {
+                    html += `
+                        <div class="market-card" onclick="openMarketPanel('${market.id}')">
+                            <div class="market-card-header">
+                                <div>
+                                    <div class="market-type">${market.type}</div>
+                                    <div class="market-info">Market ID: ${market.id} • Updated: ${market.updated}</div>
+                                </div>
+                                <span class="badge badge-active">Active</span>
+                            </div>
+                            <div class="odds-display">
+                                ${market.odds.map(odd => `
+                                    <div class="odd-item">
+                                        <div class="odd-label">${odd.label}</div>
+                                        <div class="odd-value">${odd.value}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+                marketsContainer.innerHTML = html;
+            }
+        }
+        
+        // Provider selector change handler
+        const providerSelector = document.querySelector('#single-provider-controls select');
+        if (providerSelector) {
+            providerSelector.addEventListener('change', (e) => {
+                updateSingleProviderMarkets(e.target.value);
+            });
+        }
+        
+        if (singleProviderBtn && multiProviderBtn) {
+            multiProviderBtn.addEventListener('click', () => {
+                // Update button styles
+                multiProviderBtn.style.background = 'var(--accent-blue)';
+                multiProviderBtn.style.color = '#ffffff';
+                multiProviderBtn.style.borderColor = 'var(--accent-blue)';
+                singleProviderBtn.style.background = '';
+                singleProviderBtn.style.color = '';
+                singleProviderBtn.style.borderColor = '';
+                
+                // Show/hide views
+                if (multiProviderView) multiProviderView.style.display = 'block';
+                if (singleProviderView) singleProviderView.style.display = 'none';
+                if (multiProviderControls) multiProviderControls.style.display = 'flex';
+                if (singleProviderControls) singleProviderControls.style.display = 'none';
+            });
+            
+            singleProviderBtn.addEventListener('click', () => {
+                // Update button styles
+                singleProviderBtn.style.background = 'var(--accent-blue)';
+                singleProviderBtn.style.color = '#ffffff';
+                singleProviderBtn.style.borderColor = 'var(--accent-blue)';
+                multiProviderBtn.style.background = '';
+                multiProviderBtn.style.color = '';
+                multiProviderBtn.style.borderColor = '';
+                
+                // Show/hide views
+                if (singleProviderView) singleProviderView.style.display = 'block';
+                if (multiProviderView) multiProviderView.style.display = 'none';
+                if (singleProviderControls) singleProviderControls.style.display = 'flex';
+                if (multiProviderControls) multiProviderControls.style.display = 'none';
+            });
+        }
+        
+        // Compare mode button for merged view
+        const compareModeBtnMerged = document.getElementById('compare-mode-btn-merged');
+        const compareModeNotice = document.getElementById('compare-mode-notice');
+        if (compareModeBtnMerged) {
+            compareModeBtnMerged.addEventListener('click', () => {
+                const isEnabled = compareModeBtnMerged.textContent.includes('Enable');
+                
+                // Get market cards from BOTH providers
+                const opticOdds1x2Card = document.querySelector('[onclick="openMarketPanel(\'MKT-001-A\')"]');
+                const opticOddsOverUnderCard = document.querySelector('[onclick="openMarketPanel(\'MKT-002-A\')"]');
+                const lsports1x2Card = document.querySelector('[onclick="openMarketPanel(\'MKT-001-B\')"]');
+                const lsportsOverUnderCard = document.querySelector('[onclick="openMarketPanel(\'MKT-002-B\')"]');
+                
+                if (isEnabled) {
+                    // Enable Compare Mode
+                    compareModeBtnMerged.textContent = '⚖️ Disable Compare Mode';
+                    compareModeBtnMerged.style.background = 'var(--accent-orange)';
+                    if (compareModeNotice) compareModeNotice.style.display = 'block';
+                    
+                    // Highlight Optic Odds 1X2 market differences
+                    if (opticOdds1x2Card) {
+                        opticOdds1x2Card.style.borderLeft = '3px solid var(--accent-orange)';
+                        
+                        // Highlight provider name difference
+                        const marketType = opticOdds1x2Card.querySelector('.market-type');
+                        if (marketType) {
+                            marketType.innerHTML = '1X2 <span style="background: rgba(253, 126, 20, 0.1); padding: 0.15rem 0.4rem; border-radius: 4px; color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Match Result <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 600;">⚠️ Name Diff</span></span>';
+                        }
+                        
+                        // Highlight ALL odds differences
+                        const oddValues = opticOdds1x2Card.querySelectorAll('.odd-value');
+                        if (oddValues[0]) { // Home
+                            oddValues[0].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[0].style.color = 'var(--accent-orange)';
+                        }
+                        if (oddValues[1]) { // Draw
+                            oddValues[1].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[1].style.color = 'var(--accent-orange)';
+                        }
+                        if (oddValues[2]) { // Away
+                            oddValues[2].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[2].style.color = 'var(--accent-orange)';
+                        }
+                    }
+                    
+                    // Highlight Optic Odds Over/Under market differences
+                    if (opticOddsOverUnderCard) {
+                        opticOddsOverUnderCard.style.borderLeft = '3px solid var(--accent-orange)';
+                        
+                        // Highlight provider name difference
+                        const marketType = opticOddsOverUnderCard.querySelector('.market-type');
+                        if (marketType) {
+                            marketType.innerHTML = 'Over/Under <span style="background: rgba(253, 126, 20, 0.1); padding: 0.15rem 0.4rem; border-radius: 4px; color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Total Goals 2.5 <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 600;">⚠️ Name Diff</span></span>';
+                        }
+                        
+                        // Highlight odds differences
+                        const oddValues = opticOddsOverUnderCard.querySelectorAll('.odd-value');
+                        if (oddValues[0]) { // Over
+                            oddValues[0].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[0].style.color = 'var(--accent-orange)';
+                        }
+                        if (oddValues[1]) { // Under
+                            oddValues[1].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[1].style.color = 'var(--accent-orange)';
+                        }
+                    }
+                    
+                    // Highlight LSports 1X2 market differences
+                    if (lsports1x2Card) {
+                        lsports1x2Card.style.borderLeft = '3px solid var(--accent-orange)';
+                        
+                        // Highlight provider name difference
+                        const marketType = lsports1x2Card.querySelector('.market-type');
+                        if (marketType) {
+                            marketType.innerHTML = '1X2 <span style="background: rgba(253, 126, 20, 0.1); padding: 0.15rem 0.4rem; border-radius: 4px; color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Match Winner <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 600;">⚠️ Name Diff</span></span>';
+                        }
+                        
+                        // Highlight ALL odds differences
+                        const oddValues = lsports1x2Card.querySelectorAll('.odd-value');
+                        if (oddValues[0]) { // Home
+                            oddValues[0].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[0].style.color = 'var(--accent-orange)';
+                        }
+                        if (oddValues[1]) { // Draw
+                            oddValues[1].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[1].style.color = 'var(--accent-orange)';
+                        }
+                        if (oddValues[2]) { // Away
+                            oddValues[2].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[2].style.color = 'var(--accent-orange)';
+                        }
+                    }
+                    
+                    // Highlight LSports Over/Under market differences
+                    if (lsportsOverUnderCard) {
+                        lsportsOverUnderCard.style.borderLeft = '3px solid var(--accent-orange)';
+                        
+                        // Highlight provider name difference
+                        const marketType = lsportsOverUnderCard.querySelector('.market-type');
+                        if (marketType) {
+                            marketType.innerHTML = 'Over/Under <span style="background: rgba(253, 126, 20, 0.1); padding: 0.15rem 0.4rem; border-radius: 4px; color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Over/Under 2.5 Goals <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 600;">⚠️ Name Diff</span></span>';
+                        }
+                        
+                        // Highlight odds differences
+                        const oddValues = lsportsOverUnderCard.querySelectorAll('.odd-value');
+                        if (oddValues[0]) { // Over
+                            oddValues[0].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[0].style.color = 'var(--accent-orange)';
+                        }
+                        if (oddValues[1]) { // Under
+                            oddValues[1].style.background = 'rgba(253, 126, 20, 0.1)';
+                            oddValues[1].style.color = 'var(--accent-orange)';
+                        }
+                    }
+                } else {
+                    // Disable Compare Mode - Remove ALL highlights from BOTH providers
+                    compareModeBtnMerged.textContent = '⚖️ Enable Compare Mode';
+                    compareModeBtnMerged.style.background = '';
+                    if (compareModeNotice) compareModeNotice.style.display = 'none';
+                    
+                    // Remove Optic Odds 1X2 highlights
+                    if (opticOdds1x2Card) {
+                        opticOdds1x2Card.style.borderLeft = '';
+                        
+                        const marketType = opticOdds1x2Card.querySelector('.market-type');
+                        if (marketType) {
+                            marketType.innerHTML = '1X2 <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Match Result</span>';
+                        }
+                        
+                        const oddValues = opticOdds1x2Card.querySelectorAll('.odd-value');
+                        oddValues.forEach(odd => {
+                            odd.style.background = '';
+                            odd.style.color = '';
+                        });
+                    }
+                    
+                    // Remove Optic Odds Over/Under highlights
+                    if (opticOddsOverUnderCard) {
+                        opticOddsOverUnderCard.style.borderLeft = '';
+                        
+                        const marketType = opticOddsOverUnderCard.querySelector('.market-type');
+                        if (marketType) {
+                            marketType.innerHTML = 'Over/Under <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Total Goals 2.5</span>';
+                        }
+                        
+                        const oddValues = opticOddsOverUnderCard.querySelectorAll('.odd-value');
+                        oddValues.forEach(odd => {
+                            odd.style.background = '';
+                            odd.style.color = '';
+                        });
+                    }
+                    
+                    // Remove LSports 1X2 highlights
+                    if (lsports1x2Card) {
+                        lsports1x2Card.style.borderLeft = '';
+                        
+                        const marketType = lsports1x2Card.querySelector('.market-type');
+                        if (marketType) {
+                            marketType.innerHTML = '1X2 <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Match Winner</span>';
+                        }
+                        
+                        const oddValues = lsports1x2Card.querySelectorAll('.odd-value');
+                        oddValues.forEach(odd => {
+                            odd.style.background = '';
+                            odd.style.color = '';
+                        });
+                    }
+                    
+                    // Remove LSports Over/Under highlights
+                    if (lsportsOverUnderCard) {
+                        lsportsOverUnderCard.style.borderLeft = '';
+                        
+                        const marketType = lsportsOverUnderCard.querySelector('.market-type');
+                        if (marketType) {
+                            marketType.innerHTML = 'Over/Under <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 400;">• Over/Under 2.5 Goals</span>';
+                        }
+                        
+                        const oddValues = lsportsOverUnderCard.querySelectorAll('.odd-value');
+                        oddValues.forEach(odd => {
+                            odd.style.background = '';
+                            odd.style.color = '';
+                        });
+                    }
+                }
+            });
+        }
+        
+        // Copy button functionality for code blocks
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const codeBlock = btn.parentElement;
+                const preElement = codeBlock.querySelector('pre');
+                
+                if (preElement) {
+                    // Get text content without HTML tags
+                    const text = preElement.textContent;
+                    
+                    navigator.clipboard.writeText(text).then(() => {
+                        const originalText = btn.textContent;
+                        btn.textContent = '✓ Copied!';
+                        btn.style.background = 'var(--accent-green)';
+                        btn.style.color = '#ffffff';
+                        
+                        setTimeout(() => {
+                            btn.textContent = originalText;
+                            btn.style.background = '';
+                            btn.style.color = '';
+                        }, 2000);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
